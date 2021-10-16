@@ -1,0 +1,67 @@
+
+data BookInfo = Book Int String [String] deriving (Show)
+
+data MagazineInfo = Magazine Int String [String] deriving (Show)
+
+myInfo = Book 12345 "Programming" ["Richard Bird", "Oega de Moor"]
+
+data BookReview = BookReview BookInfo CustomerID String
+
+-- Type Synonyms
+
+type CustomerID = Int
+type ReviewBody = String
+
+data BetterReview = BetterReview BookInfo CustomerID ReviewBody
+
+type BookRecord = (BookInfo, BookReview)
+
+-- Algebraic data types
+
+-- data Bool = False | True
+
+type CardHolder = String
+type CardNumber = String
+type Address = [String]
+
+data BillingInfo = CreditCard CardNumber CardHolder Address
+                   | CashOnDelivery
+                   | Invoice CustomerID
+                   deriving (Show)
+
+a = ("Porpoise","Grey")
+b = ("Table","Oak")
+
+data Cetacean = Cetacean String String
+data Furniture = Furniture String String
+
+c = Cetacean "Porpoise" "Grey"
+d = Furniture "Table" "Oak"
+
+-- x and y coordinates or length
+data Cartesian2D = Cartesian2D Double Double
+                   deriving (Eq, Show)
+
+-- Angle and distance (magnitude).
+data Polar2D = Polar2D Double Double
+               deriving (Eq, Show)
+
+-- Enumeration Types
+
+data Roygbiv = Red
+               | Orange
+               | Yellow
+               | Green
+               | Blue
+               | Indigo
+               | Violet
+               deriving (Eq, Show)
+
+-- file: ch03/ShapeUnion.hs
+type Vector = (Double, Double)
+
+data Shape = Circle Vector Double
+           | Poly [Vector]
+
+-- Pattern Matching
+
